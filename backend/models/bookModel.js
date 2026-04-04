@@ -1,4 +1,4 @@
-import mongoose, { Model, Schema, skipMiddlewareFunction } from "mongoose";
+import mongoose from "mongoose";
 
 const bookSchema = new mongoose.Schema(
   {
@@ -25,6 +25,6 @@ const bookSchema = new mongoose.Schema(
 );
 
 // model
-const Book = mongoose.Model("Book", bookSchema);
+const Book = mongoose.model("Book", bookSchema);
 
 export default Book;
