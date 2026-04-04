@@ -85,9 +85,25 @@ export const deleteBook = async (req, res) => {
 // update one book
 export const updateBook = async (req, res) => {
   try {
-    const updatedBook = await Book.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-    });
+    const { title, author, publishedYear } = req.body;
+
+    if (!title || !author || !publishedYear) {
+      return res.status(400).json({
+        message: "All fields are required",
+      });
+    }
+
+    const updatedBook = await Book.findByIdAndUpdate(
+      req.params.id,
+      {
+        title,
+        author,
+        publishedYear,
+      },
+      {
+        new: true,
+      },
+    );
 
     if (!updatedBook) {
       return res.status(404).json({
