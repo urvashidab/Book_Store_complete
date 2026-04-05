@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //routes
-app.use("api/books", bookRoutes);
+app.use("/api/books", bookRoutes);
 
 // landing page
 app.get("/", (req, res) => {

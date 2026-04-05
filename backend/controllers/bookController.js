@@ -1,26 +1,23 @@
 import Book from "../models/bookModel.js";
 
-// create new book
+// create book data
 export const createBook = async (req, res) => {
   try {
     const { title, author, publishedYear } = req.body;
 
+    // validation
     if (!title || !author || !publishedYear) {
       return res.status(400).json({
-        message: "All fields are required",
+        message: "Fields cannot be empty",
       });
     }
 
-    const book = await Book.create({
-      title,
-      author,
-      publishedYear,
-    });
+    const book = await Book.create({ title, author, publishedYear });
 
     return res.status(201).json(book);
   } catch (err) {
     return res.status(500).json({
-      message: "Error while creating new book",
+      message: "Error while creating book",
       error: err.message,
     });
   }
@@ -34,7 +31,7 @@ export const getAllBooks = async (req, res) => {
     return res.status(200).json(books);
   } catch (err) {
     return res.status(500).json({
-      message: "Error while getting all books",
+      message: "Error while getting books",
       error: err.message,
     });
   }
@@ -54,13 +51,13 @@ export const getOneBook = async (req, res) => {
     return res.status(200).json(book);
   } catch (err) {
     return res.status(500).json({
-      message: "Error while getting one book",
+      message: "Error while getting book by ID",
       error: err.message,
     });
   }
 };
 
-// delete one book
+// delete book by id
 export const deleteBook = async (req, res) => {
   try {
     const book = await Book.findByIdAndDelete(req.params.id);
@@ -72,7 +69,7 @@ export const deleteBook = async (req, res) => {
     }
 
     return res.status(200).json({
-      message: "Book deleted successfully",
+      message: "Book has been deleted",
     });
   } catch (err) {
     return res.status(500).json({
@@ -82,26 +79,24 @@ export const deleteBook = async (req, res) => {
   }
 };
 
-// update one book
+// update data
 export const updateBook = async (req, res) => {
   try {
     const { title, author, publishedYear } = req.body;
 
+    // validation
     if (!title || !author || !publishedYear) {
       return res.status(400).json({
-        message: "All fields are required",
+        message: "Fields cannot be empty",
       });
     }
 
     const updatedBook = await Book.findByIdAndUpdate(
       req.params.id,
-      {
-        title,
-        author,
-        publishedYear,
-      },
+      { title, author, publishedYear },
       {
         new: true,
+        runValidators: true,
       },
     );
 
