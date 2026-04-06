@@ -42,8 +42,10 @@ export const ContextProvider = ({ children }) => {
       setError(null);
       const response = await axios.post(BASE_URL, bookData);
       setBooks((prevBookData) => [...prevBookData, response.data]);
+      return true;
     } catch (err) {
       setError("Failed to add book");
+      return false;
     } finally {
       setLoading(false);
     }
@@ -58,8 +60,10 @@ export const ContextProvider = ({ children }) => {
       setBooks((prevBookData) =>
         prevBookData.filter((book) => book._id !== id),
       );
+      return true;
     } catch (err) {
       setError("Failed to delete Book");
+      return false;
     } finally {
       setLoading(false);
     }
@@ -75,8 +79,10 @@ export const ContextProvider = ({ children }) => {
       setBooks((prevBookData) =>
         prevBookData.map((book) => (book._id === id ? response.data : book)),
       );
+      return true;
     } catch (err) {
       setError("failed to update book");
+      return false;
     } finally {
       setLoading(false);
     }
