@@ -7,21 +7,23 @@ const Home = () => {
 
   return (
     <div className="py-10">
-      {/* Header */}
+      {/* header of page */}
       <div className="flex justify-between items-center mb-6">
+        {/* main heading */}
         <div>
           <h1 className="text-3xl tracking-widest uppercase">Dashboard</h1>
         </div>
+        {/* add book button */}
         <Link to="/addbook" className="btn px-6 py-2 uppercase ">
           + Add Book
         </Link>
-        {/* filter */}
-        <select className="px-6 py-1.5 text-mutedText  dark:text-darkMuted ">
+        {/* filters */}
+        {/* <select className="px-6 py-1.5 text-mutedText  dark:text-darkMuted ">
           <option value="">Filter</option>
           <option value="title">Title</option>
           <option value="auhtorName">Author Name</option>
           <option value="year">Published Year</option>
-        </select>
+        </select> */}
       </div>
 
       {/* Total books count */}
