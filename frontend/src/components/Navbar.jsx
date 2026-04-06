@@ -13,7 +13,7 @@ const Navbar = () => {
     <div className="hidden lg:flex justify-between py-6 items-center">
       {/* right side */}
       <h1 className="font-semibold uppercase tracking-widest">
-        Book Store Managment
+        Book Store Manager
       </h1>
 
       {/* middle part */}
@@ -22,12 +22,12 @@ const Navbar = () => {
           HOME
         </NavLink>
 
-        <NavLink to="/addbook" className="nav-link">
-          ADD BOOK
+        <NavLink to="/about" className="nav-link">
+          ABOUT
         </NavLink>
 
-        <NavLink to="/editbook" className="nav-link">
-          EDIT BOOK
+        <NavLink to="/addbook" className="nav-link">
+          ADD BOOK
         </NavLink>
       </ul>
 

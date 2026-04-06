@@ -6,6 +6,9 @@ export const ProjectContext = createContext();
 const BASE_URL = "http://localhost:8080/api/books";
 
 export const ContextProvider = ({ children }) => {
+  const minYear = 1000;
+  const currentYear = new Date().getFullYear();
+
   const [isDark, setIsDark] = useState(() => {
     return localStorage.getItem("theme") === "dark";
   });
@@ -105,6 +108,8 @@ export const ContextProvider = ({ children }) => {
         addBook,
         updateBook,
         deleteBook,
+        minYear,
+        currentYear,
       }}
     >
       {children}

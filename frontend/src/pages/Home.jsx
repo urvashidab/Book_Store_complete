@@ -10,9 +10,7 @@ const Home = () => {
       {/* Header */}
       <div className="flex justify-between items-center mb-6">
         <div>
-          <h1 className="text-3xl tracking-widest uppercase">
-            Books Dashboard
-          </h1>
+          <h1 className="text-3xl tracking-widest uppercase">Dashboard</h1>
         </div>
         <Link to="/addbook" className="btn px-6 py-2 uppercase ">
           + Add Book

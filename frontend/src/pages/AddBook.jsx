@@ -3,7 +3,7 @@ import { ProjectContext } from "../context/ProjectContext";
 import { toast } from "react-toastify";
 
 const AddBook = () => {
-  const { addBook } = useContext(ProjectContext);
+  const { addBook, minYear, currentYear } = useContext(ProjectContext);
 
   const [formData, setFormData] = useState({
     title: "",
@@ -31,8 +31,6 @@ const AddBook = () => {
       toast.error("Failed to add book");
     }
   };
-
-  const currentYear = new Date().getFullYear();
 
   return (
     <div className="h-full flex flex-col items-center justify-center py-10">
@@ -73,14 +71,16 @@ const AddBook = () => {
             type="number"
             name="publishedYear"
             value={formData.publishedYear}
+            min={minYear}
+            max={currentYear}
             required
             placeholder="PUBLISHED YEAR"
             onChange={handleChange}
             className="input-form"
           />
-
+          {/* validation text */}
           <p className="text-xs text-mutedText dark:text-darkMuted -mt-3">
-            Published year must be between 1000 and {currentYear}
+            Published year must be between {minYear} and {currentYear}
           </p>
 
           {/* submit button */}
