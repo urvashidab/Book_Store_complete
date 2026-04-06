@@ -1,5 +1,58 @@
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Poppins", sans-serif;
+
+  /* Light mode */
+  --color-primaryBg: #faf7f2; /* Warm Ivory — page background */
+  --color-surfaceBg: #f0eae0; /* Parchment — cards / surfaces */
+  --color-borderColor: #e2d9cc; /* Linen — dividers / sidebar */
+  --color-primaryText: #2c1a0e; /* Dark Espresso — headings */
+  --color-mutedText: #6b5e52; /* Warm Gray — body text / labels */
+  --color-accent: #7b4f2e; /* Leather Brown — buttons / links */
+  --color-highlight: #c8622a; /* Terracotta — badges / highlights */
+
+  /* Dark mode */
+  --color-darkBg: #1a1410; /* Deep Espresso — page background */
+  --color-darkSurface: #251c16; /* Dark Walnut — cards / surfaces */
+  --color-darkBorder: #332820; /* Mocha — dividers / sidebar */
+  --color-darkText: #ede6da; /* Cream — headings */
+  --color-darkMuted: #a89880; /* Warm Mist — body text / labels */
+  --color-darkAccent: #d4875a; /* Warm Amber — buttons / links */
+  --color-darkHighlight: #e8784a; /* Ember — badges / highlights */
+}
+
+@layer base {
+  body {
+    @apply font-sans bg-primaryBg text-primaryText dark:bg-darkBg dark:text-darkText antialiased;
+  }
+}
+
+/* main button */
+.btn {
+  @apply border border-accent tracking-widest  cursor-pointer text-accent
+  hover:bg-accent hover:text-primaryBg
+  dark:border-darkAccent dark:text-darkAccent
+  dark:hover:bg-darkAccent dark:hover:text-darkBg
+  transition-all duration-200 ease-out;
+}
+
+/* input field */
+.input-form {
+  @apply w-full border-b border-borderColor dark:border-darkBorder
+  focus:border-accent dark:focus:border-darkAccent
+  py-3 outline-none
+  placeholder:text-mutedText dark:placeholder:text-darkMuted 
+  bg-transparent;
+}
+
+/* nav link */
 .nav-link {
-  @apply cursor-pointer text-sm text-amber-800 hover:text-amber-500;
+  @apply cursor-pointer text-sm text-mutedText
+  hover:text-highlight
+  dark:text-darkMuted dark:hover:text-darkHighlight
+  transition-colors duration-150;
 }

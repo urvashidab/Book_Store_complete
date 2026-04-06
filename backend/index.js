@@ -1,12 +1,14 @@
 import dotenv from "dotenv";
 dotenv.config();
-
+import cors from "cors";
 import express from "express";
 import mongoose from "mongoose";
 import connectDB from "./config/db.js";
 import bookRoutes from "./routes/bookRoutes.js";
 
 const app = express();
+
+app.use(cors({ origin: "http://localhost:5173" }));
 
 //connect database
 connectDB();
