@@ -19,7 +19,7 @@ const Navbar = () => {
   return (
     <div className=" flex justify-between py-6 items-center">
       {/* right side */}
-      <h1 className="font-semibold uppercase tracking-widest">
+      <h1 className="font-semibold uppercase md:tracking-widest ">
         Book Store Manager
       </h1>
 
