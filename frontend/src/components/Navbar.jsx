@@ -20,7 +20,7 @@ const Navbar = () => {
     <div className=" flex justify-between py-6 items-center">
       {/* right side */}
       <h1 className="font-semibold uppercase md:tracking-widest ">
-        Book Store Manager
+        Book vault
       </h1>
 
       {/* middle part */}

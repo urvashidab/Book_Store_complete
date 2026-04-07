@@ -18,10 +18,10 @@ const About = () => {
         </h2>
 
         <p className="text-mutedText text-lg dark:text-darkMuted leading-relaxed">
-          This <span className="font-semibold">Book Store Manager</span> is a
-          full-stack MERN application designed to demonstrate complete CRUD
-          functionality. Users can easily add, edit, update, and delete book
-          records through a clean and responsive interface.
+          This <span className="font-semibold">Book Vault</span> is a full-stack
+          MERN application designed to demonstrate complete CRUD functionality.
+          Users can easily add, edit, update, and delete book records through a
+          clean and responsive interface.
         </p>
 
         <p className="text-mutedText text-lg dark:text-darkMuted leading-relaxed">
