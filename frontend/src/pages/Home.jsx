@@ -1,29 +1,27 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ProjectContext } from "../context/ProjectContext";
 import { Link } from "react-router-dom";
+import BookCard from "../components/BookCard";
+import DeleteConfirmModal from "../components/DeleteConfirmModal";
 
 const Home = () => {
   const { books, loading, error, deleteBook } = useContext(ProjectContext);
+
+  const [selectedBook, setSelectedBook] = useState(null);
+  const [deleteBookID, setDeleteBookID] = useState(null);
 
   return (
     <div className="py-10">
       {/* header of page */}
       <div className="flex justify-between items-center mb-6">
         {/* main heading */}
-        <div>
-          <h1 className="text-3xl tracking-widest uppercase">Dashboard</h1>
-        </div>
+
+        <h1 className="text-3xl tracking-widest uppercase">Dashboard</h1>
+
         {/* add book button */}
         <Link to="/addbook" className="btn px-6 py-2 uppercase ">
           + Add Book
         </Link>
-        {/* filters */}
-        {/* <select className="px-6 py-1.5 text-mutedText  dark:text-darkMuted ">
-          <option value="">Filter</option>
-          <option value="title">Title</option>
-          <option value="auhtorName">Author Name</option>
-          <option value="year">Published Year</option>
-        </select> */}
       </div>
 
       {/* Total books count */}
@@ -68,16 +66,25 @@ const Home = () => {
                   <td className="p-4">{book.publishedYear}</td>
 
                   <td className="p-4 flex gap-4">
+                    {/* view — opens modal */}
+                    <button
+                      onClick={() => setSelectedBook(book)}
+                      className="btn px-4 py-1"
+                    >
+                      View
+                    </button>
+                    {/* edit-- separate page */}
                     <Link
                       to={`/editbook/${book._id}`}
-                      className="btn px-4 py-1"
+                      className="btn  px-4 py-1"
                     >
                       Edit
                     </Link>
 
+                    {/* delete- popup */}
                     <button
-                      onClick={() => deleteBook(book._id)}
-                      className="btn px-4 py-1"
+                      onClick={() => setDeleteBookID(book._id)}
+                      className="btn  px-4 py-1"
                     >
                       Delete
                     </button>
@@ -87,6 +94,21 @@ const Home = () => {
             </tbody>
           </table>
         </div>
+      )}
+      {/* book card modal */}
+      {selectedBook && (
+        <BookCard book={selectedBook} onClose={() => setSelectedBook(null)} />
+      )}
+
+      {/* delete book modal */}
+      {deleteBookID && (
+        <DeleteConfirmModal
+          onConfirm={() => {
+            deleteBook(deleteBookID);
+            setDeleteBookID(null);
+          }}
+          onCancel={() => setDeleteBookID(null)}
+        />
       )}
     </div>
   );

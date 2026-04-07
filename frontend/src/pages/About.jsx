@@ -8,11 +8,11 @@ const About = () => {
       <img
         src={img}
         alt="BooksPhoto"
-        className="object-cover h-[70vh] w-full rounded"
+        className="object-cover h-[70vh] w-full rounded hidden lg:block"
       />
 
       {/* right side */}
-      <div className="flex flex-col gap-5 px-2">
+      <div className="flex flex-col gap-5 px-2 max-w-2xl lg:max-w-xl mx-auto lg:mx-0">
         <h2 className="text-3xl font-semibold tracking-wider uppercase text-primaryText dark:text-darkText">
           About This Project
         </h2>
