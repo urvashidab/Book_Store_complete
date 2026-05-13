@@ -8,7 +8,12 @@ import bookRoutes from "./routes/bookRoutes.js";
 
 const app = express();
 
-app.use(cors({ origin: "http://localhost:5173" }));
+app.use(
+  cors({
+    origin: "https://book-store-complete.vercel.app/",
+    credentials: true,
+  }),
+);
 
 //connect database
 connectDB();
