@@ -10,7 +10,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://book-store-complete.vercel.app/",
+    origin: "https://book-store-complete.vercel.app",
     credentials: true,
   }),
 );
