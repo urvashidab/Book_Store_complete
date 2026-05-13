@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const ProjectContext = createContext();
 
-const BASE_URL = "http://localhost:8080/api/books";
+const BASE_URL = "https://book-store-complete.onrender.com/api/books";
 
 export const ContextProvider = ({ children }) => {
   const minYear = 1000;
@@ -31,6 +31,7 @@ export const ContextProvider = ({ children }) => {
       const response = await axios.get(BASE_URL);
       setBooks(response.data);
     } catch (err) {
+      console.log(err);
       setError("Failed to fetch books");
     } finally {
       setLoading(false);
@@ -47,6 +48,7 @@ export const ContextProvider = ({ children }) => {
       setBooks((prevBookData) => [...prevBookData, response.data]);
       return true;
     } catch (err) {
+      console.log(err);
       setError("Failed to add book");
       return false;
     } finally {
@@ -65,6 +67,7 @@ export const ContextProvider = ({ children }) => {
       );
       return true;
     } catch (err) {
+      console.log(err);
       setError("Failed to delete Book");
       return false;
     } finally {
@@ -84,6 +87,7 @@ export const ContextProvider = ({ children }) => {
       );
       return true;
     } catch (err) {
+      console.log(err);
       setError("failed to update book");
       return false;
     } finally {
