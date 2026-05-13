@@ -10,8 +10,7 @@ const app = express();
 
 app.use(
   cors({
-    origin:
-      "https://book-store-complete-git-main-urvashi-dabgotras-projects.vercel.app/",
+    origin: "https://book-store-complete.vercel.app/",
     credentials: true,
   }),
 );
